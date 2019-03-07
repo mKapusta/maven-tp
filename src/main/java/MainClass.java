@@ -1,16 +1,19 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainClass {
 
     public static void main(String[] args) {
-        String fileName = "Monfichier.txt";
-        try (Stream<String> stream = Files.lines(Paths.get(ClassLoader.getSystemResource(fileName).toURI()))) {
-            stream.forEach(System.out::println);
-        } catch (IOException | URISyntaxException e) {
+        InputStream in = MainClass.class.getResourceAsStream("Monfichier.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String sCurrentLine;
+        try {
+            while ((sCurrentLine = reader.readLine()) != null) {
+                System.out.println(sCurrentLine);
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
