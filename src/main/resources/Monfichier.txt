@@ -1,0 +1,2 @@
+Ceci est la premiere ligne de mon fichier
+Et ceci, est la seconde ligne de mon fichier
